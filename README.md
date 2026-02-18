@@ -1,159 +1,106 @@
 # Number Sorter
 
-A small interactive tool that lets you choose five numbers from dropdowns and then sorts them in ascending order. Built to practice array methods, comparison functions, and classic sorting algorithms in JavaScript.
+An interactive JavaScript application that allows users to select five numbers and sort them in ascending order.  
+Built to practice array manipulation, numeric comparison logic, and classic sorting algorithm implementations.
 
-## Demo
+## Live Demo
+https://sharpsanders.github.io/number-sorter/
 
-The UI shows:
+![Number Sorter Screenshot](./img/Screenshot-number-sorter.png)
 
-- A title: **Number Sorter**
-- An **Input** section:
-  - Five dropdowns, each with values from `0` to `9`
-  - Default values: `[8, 2, 4, 1, 3]`
-- A **Sort** button
-- An **Output** section that displays the sorted array, like:
+---
 
-```text
-[ 1, 2, 3, 4, 8 ]
-Tech Stack
-HTML – structure for the inputs, button, and output.
+## Overview
 
-CSS – layout, spacing, and styling consistent with the freeCodeCamp theme.
+The application provides:
 
-JavaScript – reading form values, sorting, and updating the UI.
+- Five dropdown inputs (values 0–9)
+- A Sort button
+- A dynamic output display showing the sorted array
 
-Features
-Five dropdowns to select numbers between 0 and 9.
+Default input values: `[8, 2, 4, 1, 3]`  
+Example output: `[ 1, 2, 3, 4, 8 ]`
 
-On Sort, the app:
+---
 
-Reads the selected values.
+## Features
 
-Converts them to numbers.
+- Five selectable numeric inputs (0–9)
+- Converts form values from strings to numbers
+- Sorts values in ascending order
+- Updates the UI dynamically without page reload
+- Responsive layout for desktop and mobile
 
-Sorts them in ascending order.
+### Sorting Logic
 
-Updates the output display.
+The UI currently uses JavaScript’s built-in `Array.sort()` with a numeric comparison function:
 
-Responsive layout that stays centered and readable on small and large screens.
-
-Includes implementations of three classic sorting algorithms:
-
-Bubble sort
-
-Selection sort
-
-Insertion sort
-
-(Only the built-in Array.sort is wired to the UI right now; the other algorithms are there as learning/reference code.)
-
-How to Run the Project
-Clone the repository:
-
-bash
-Copy code
-git clone https://github.com/SharpSanders/number-sorter.git
-cd number-sorter
-Open the app:
-
-Option A: Double-click index.html to open it in your browser.
-
-Option B (recommended while developing): Use the Live Server extension in VS Code and open index.html via Live Server.
-
-You should see the Number Sorter interface with five dropdowns and the Sort button.
-
-How to Use
-Use each dropdown under Input to pick the numbers you want.
-
-Click the Sort button.
-
-The Output section will update to show the numbers sorted in ascending order.
-
-You can change the dropdown values and hit Sort again as many times as you want.
-
-How It Works (JavaScript Overview)
-All logic lives in script.js.
-
-Main flow
-sortButton references the Sort button.
-
-sortInputArray(event):
-
-Calls event.preventDefault() to stop the form submitting.
-
-Collects the values of all elements with the class .values-dropdown:
-
-js
-Copy code
-const inputValues = [
-  ...document.getElementsByClassName("values-dropdown")
-].map((dropdown) => Number(dropdown.value));
-Sorts them using the built-in Array.sort with a numeric comparison:
-
-js
-Copy code
+```js
 const sortedValues = inputValues.sort((a, b) => a - b);
-Calls updateUI(sortedValues) to display the result.
+In addition, the project includes manual implementations of:
 
-updateUI(array):
+Bubble Sort
 
-Loops through the sorted array.
+Selection Sort
 
-For each index i, sets the text of #output-value-i to the sorted number.
+Insertion Sort
 
-This updates the output [ 0, 0, 0, 0, 0 ] into the actual sorted list.
+These are included for algorithm practice and comparison purposes.
 
-Classic Sorting Algorithms (for learning)
-The file also contains three standalone sorting implementations:
+Technical Highlights
+Uses spread syntax and Array.map() to collect dropdown values
 
-bubbleSort(array)
+Prevents default form submission behavior with event.preventDefault()
 
-selectionSort(array)
+Implements a proper numeric compare function to avoid lexicographical sorting errors
 
-insertionSort(array)
+Separates UI update logic into a dedicated updateUI() function
 
-Each function:
+Includes standalone sorting algorithm implementations written from scratch
 
-Takes an array of numbers.
+Tech Stack
+HTML5
 
-Mutates it in place to sort it.
+CSS3
 
-Returns the sorted array.
+JavaScript (ES6+)
 
-These functions aren’t wired to the UI, but they’re useful for practicing and comparing against the built-in sort method.
+No external libraries or frameworks.
 
 Project Structure
-text
-Copy code
 number-sorter/
-├── index.html   # Markup for the title, form, and output display
-├── styles.css   # Styling and layout for the sorter UI
-└── script.js    # Sorting logic, DOM interaction, and classic algorithms
-What I Practiced
-Selecting DOM elements and reading their values.
+  index.html     # Markup and form structure
+  styles.css     # Layout and UI styling
+  script.js      # Sorting logic and DOM interaction
+How to Run Locally
+Clone the repository:
 
-Converting string values from form controls into numbers.
+git clone https://github.com/SharpSanders/number-sorter.git
+cd number-sorter
+Open index.html in your browser.
 
-Using spread syntax and Array.map.
+Optional: Use VS Code Live Server during development.
 
-Sorting numbers correctly with a custom compare function.
+What This Project Demonstrates
+DOM selection and value extraction
 
-Implementing bubble sort, selection sort, and insertion sort by hand.
+Converting form input values into numbers safely
 
-Updating the UI dynamically based on user interaction.
+Implementing and comparing multiple sorting algorithms
+
+Proper numeric sorting using a custom compare function
+
+Updating UI elements dynamically based on user input
 
 Future Improvements
-Allow the user to:
+Allow dynamic number of inputs
 
-Choose how many numbers to sort.
+Add algorithm selection toggle (built-in vs custom)
 
-Pick which sorting algorithm to use (built-in vs bubble/selection/insertion).
+Visualize sorting steps
 
-Show a step-by-step visualization of each sorting algorithm.
-
-Add error handling for invalid inputs or duplicated IDs.
-
-Add tests for each sorting function.
+Add automated tests for each sorting function
 
 Author
-Created by Trevyn Sanders.
+Trevyn Sanders
+Better Endeavors LLC
